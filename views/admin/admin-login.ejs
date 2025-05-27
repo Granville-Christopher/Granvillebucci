@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Bucci</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md mx-auto bg-white rounded-3xl shadow-xl p-8 md:p-12">
+        <div class="flex flex-col items-center mb-8">
+            <img src="https://placehold.co/40x40/fff/3B82F6?text=B" alt="Bucci Logo"
+                    class="h-10 w-10 rounded-full object-cover shadow-xl border-blue-200 border">
+            <h1 class="text-2xl font-extrabold text-gray-900">Admin Login</h1>
+        </div>
+        <form class="space-y-6">
+            <div>
+                <label for="email" class="block text-gray-700 font-semibold mb-2">Email Address</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200" placeholder="admin@bucci.com" required>
+            </div>
+            <div>
+                <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+                <input type="password" id="password" name="password" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200" placeholder="Your password" required>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300">Login</button>
+        </form>
+        <div class="text-center mt-6">
+            <span class="text-gray-600 text-sm">Don't have an account?</span>
+            <a href="admin-signup.html" class="text-blue-600 hover:underline font-semibold ml-1">Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>
