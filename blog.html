@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucci Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-br from-blue-50 to-blue-100 shadow-md fixed top-0 left-0 w-full z-50 rounded-b-lg p-4 md:p-6">
+        <div class="mx-auto md:px-20 flex flex-wrap items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40/00bcd4/ffffff?text=B" alt="Bucci Logo" class="h-10 w-10 rounded-full object-cover">
+                <span class="text-2xl font-extrabold text-gray-800">Bucci</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Home</a>
+                <a href="portfolio.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Portfolio</a>
+                <a href="index.html#services" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Services</a>
+                <a href="#" class="text-blue-700 font-bold transition duration-300">Blog</a>
+                <a href="index.html#contact" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Contact</a>
+            </div>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
+                <a href="index.html#contact">Get in Touch</a>
+            </button>
+        </div>
+    </nav>
+    <main class="flex-1 pt-32 md:px-20 px-4">
+        <!-- Hero Section -->
+        <section class="text-center mb-20">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Bucci's Blog</h1>
+            <p class="text-md md:text-xl text-blue-700 max-w-2xl mx-auto mb-8 font-semibold">Insights, tutorials, and stories on web development, UI/UX, and digital innovation.</p>
+        </section>
+        <!-- Featured Article -->
+        <section class="mb-20 flex flex-col md:flex-row items-center gap-12 bg-white rounded-3xl shadow-2xl p-8 md:p-16 relative overflow-hidden">
+            <div class="md:w-1/2 w-full flex-shrink-0">
+                <img src="img/Gemini_Generated_Image_wk92d7wk92d7wk92.png" alt="Featured Blog" class="rounded-2xl shadow-xl w-full h-72 object-cover">
+            </div>
+            <div class="md:w-1/2 w-full text-left">
+                <span class="inline-block bg-blue-100 text-blue-700 font-bold px-4 py-1 rounded-full mb-4 text-xs">Featured</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4 leading-tight">How to Build a Standout Portfolio Website in 2025</h2>
+                <p class="text-gray-700 text-md mb-6">Discover the latest trends and must-have features for a modern portfolio site. Learn how to combine design, usability, and performance to impress clients and employers.</p>
+                <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold text-lg">Read More &rarr;</a>
+            </div>
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-100 rounded-full opacity-30 blur-2xl"></div>
+        </section>
+        <!-- Blog Grid -->
+        <section class="mb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Blog Card 1 -->
+                <div class="bg-white rounded-2xl shadow-lg flex flex-col h-full">
+                    <img src="img/yo.avif" alt="Blog 1" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-xs text-blue-600 font-semibold mb-2">UI/UX</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">5 UI Design Mistakes to Avoid</h3>
+                        <p class="text-gray-600 mb-4 flex-1">Common pitfalls in UI design and how to create interfaces that delight users.</p>
+                        <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold mt-auto">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 2 -->
+                <div class="bg-white rounded-2xl shadow-lg flex flex-col h-full">
+                    <img src="img/publicContain.webp" alt="Blog 2" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-xs text-orange-500 font-semibold mb-2">Development</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Mastering Responsive Layouts with Tailwind</h3>
+                        <p class="text-gray-600 mb-4 flex-1">A practical guide to building beautiful, flexible layouts using Tailwind CSS.</p>
+                        <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold mt-auto">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 3 -->
+                <div class="bg-white rounded-2xl shadow-lg flex flex-col h-full">
+                    <img src="img/tbd.avif" alt="Blog 3" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-xs text-green-600 font-semibold mb-2">Business</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Why Every Brand Needs a Custom Website</h3>
+                        <p class="text-gray-600 mb-4 flex-1">Explore the business benefits of a unique, professionally built website.</p>
+                        <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold mt-auto">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 4 -->
+                <div class="bg-white rounded-2xl shadow-lg flex flex-col h-full">
+                    <img src="img/dui.webp" alt="Blog 4" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-xs text-purple-600 font-semibold mb-2">Tips</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Boosting SEO for Local Businesses</h3>
+                        <p class="text-gray-600 mb-4 flex-1">Actionable strategies to improve your local search rankings and attract more clients.</p>
+                        <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold mt-auto">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 5 -->
+                <div class="bg-white rounded-2xl shadow-lg flex flex-col h-full">
+                    <img src="img/image.png" alt="Blog 5" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-xs text-red-500 font-semibold mb-2">Inspiration</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">From Idea to Launch: My Web Project Journey</h3>
+                        <p class="text-gray-600 mb-4 flex-1">A behind-the-scenes look at the process of bringing a web project to life.</p>
+                        <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold mt-auto">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 6 -->
+                <div class="bg-white rounded-2xl shadow-lg flex flex-col h-full">
+                    <img src="img/pexels-ario-stories-278509849-31154067.jpg" alt="Blog 6" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-xs text-indigo-600 font-semibold mb-2">Case Study</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Client Success: Transforming a Local Brand</h3>
+                        <p class="text-gray-600 mb-4 flex-1">How a new website and digital strategy helped a client grow their business.</p>
+                        <a href="blogsingle.html" class="text-blue-600 hover:underline font-semibold mt-auto">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to Action -->
+        <section class="bg-blue-600 text-white rounded-2xl shadow-xl py-12 px-6 md:px-20 text-center mb-20">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Want more insights or a custom solution?</h2>
+            <p class="text-md md:text-lg mb-6">Contact Bucci for expert advice, web development, and UI/UX design services.</p>
+            <a href="index.html#contact" class="bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 inline-block">Contact Me</a>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="relative bg-blue-50 py-12 md:py-20 px-4 sm:px-10 md:px-20 text-gray-700 overflow-hidden mt-auto">
+        <div class="absolute -top-16 -left-16 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+        <div class="absolute -bottom-16 -right-16 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="relative z-10 md:mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-start md:items-center justify-start">
+            <div class="flex flex-col items-start ">
+                <div class="flex items-center space-x-2 mb-4">
+                    <img src="https://placehold.co/40x40/00bcd4/ffffff?text=B" alt="Bucci Logo" class="h-10 w-10 rounded-full object-cover">
+                    <span class="text-2xl font-extrabold text-gray-800">Bucci</span>
+                </div>
+                <p class="text-gray-600 text-xs md:text-s">Web Development and UI Design Expert</p>
+            </div>
+            <div class="text-start md:text-center">
+                <h3 class="font-bold md:text-lg text-s text-gray-800 mb-4">Menu</h3>
+                <ul class="space-y-2 text-xs md:text-s">
+                    <li><a href="index.html" class="text-gray-600 hover:text-blue-700 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="text-gray-600 hover:text-blue-700 transition duration-300">About</a></li>
+                    <li><a href="portfolio.html" class="text-gray-600 hover:text-blue-700 transition duration-300">Portfolio</a></li>
+                    <li><a href="index.html#services" class="text-gray-600 hover:text-blue-700 transition duration-300">Services</a></li>
+                    <li><a href="#" class="text-blue-700 font-bold transition duration-300">Blog</a></li>
+                    <li><a href="index.html#contact" class="text-gray-600 hover:text-blue-700 transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+            <div class="text-start md:text-center">
+                <h3 class="font-bold text-s md:text-lg text-gray-800 mb-4">Our Services</h3>
+                <ul class="space-y-2 text-xs md:text-s">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Front-End Development</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Back-End Development</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">UI/UX Design</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Website Maintenance</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Responsive Design</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-700 transition duration-300">Custom Web Applications</a></li>
+                </ul>
+            </div>
+            <div class="text-start md:text-center">
+                <h3 class="font-bold text-xs md:text-lg text-gray-800 mb-4">Reach Out</h3>
+                <ul class="space-y-4 text-balance text-xs md:text-s">
+                    <li class="flex items-start  md:justify-start">
+                        <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
+                        <a href="tel:+17205888452" class="text-gray-600 hover:text-blue-700 transition duration-300">(720) 588-8452</a>
+                    </li>
+                    <li class="flex items-start md:justify-start">
+                        <i class="fas fa-envelope text-blue-600 mr-3"></i>
+                        <a href="mailto:info@bucci.com" class="text-gray-600 hover:text-blue-700 transition duration-300">info@bucci.com</a>
+                    </li>
+                    <li class="flex items-start md:justify-start">
+                        <i class="fas fa-map-marker-alt text-blue-600 mr-3"></i>
+                        <span class="text-gray-600">Your Location</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500">
+            &copy; Bucci 2025
+        </div>
+    </footer>
+</body>
+</html>
