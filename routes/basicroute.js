@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { testimonyUpload,  contactBucci } = require('../controllers/basicController.js');
+const { testimonyUpload,  contactBucci } = require('../controllers/basiccontroller.js');
 const upload = require("../middlewares/upload.js");
 const Testimony = require('../models/testimony.js');
 
