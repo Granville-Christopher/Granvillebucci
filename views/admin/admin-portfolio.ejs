@@ -1,60 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Manage Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
-    <nav class="bg-gradient-to-br from-blue-50 to-blue-100 shadow-md w-full z-50 rounded-b-lg p-4 md:p-6">
-        <div class="mx-auto md:px-20 flex flex-wrap items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <img src="https://placehold.co/40x40/00bcd4/ffffff?text=B" alt="Bucci Logo" class="h-10 w-10 rounded-full object-cover">
-                <span class="text-2xl font-extrabold text-gray-800">Bucci Admin</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="admin.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Dashboard</a>
-                <a href="admin-blogs.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Blogs</a>
-                <a href="admin-portfolio.html" class="text-blue-700 font-bold transition duration-300">Portfolio</a>
-                <a href="admin-contacts.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Contacts</a>
-                <a href="admin-contactinfo.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Contact Info</a>
-            </div>
-        </div>
-    </nav>
-    <main class="flex-1 pt-24 md:px-20 px-4">
+<%- include('partials/header') %>
+    <main class="flex-1 pt-24 md:px-20">
         <section class="mb-12 text-center">
             <h1 class="text-md md:text-3xl font-extrabold text-gray-900 mb-4">Manage Portfolio Items</h1>
-            <p class="text-xs md:text-lg text-blue-700 mb-8">Add, edit, or delete portfolio projects for your website.</p>
+            <p class="text-xs md:text-lg text-blue-700 mb-8">Add, edit, or delete portfolio projects for your website.
+            </p>
+
+            <button id="toggle-portfolio-form-button"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 text-sm md:text-base">
+                Add New Project
+            </button>
         </section>
-        <section class="bg-white rounded-2xl shadow-xl p-8 mb-16 max-w-3xl mx-auto">
+
+        <section id="add-portfolio-form-section"
+            class="bg-white rounded-2xl shadow-xl p-8 mb-16 max-w-3xl mx-auto hidden">
             <h2 class="text-sm font-bold mb-4 text-gray-800">Add New Portfolio Item</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="flex flex-col ">
-                    <input type="text" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="Project Title" />
+            <form id="portfolio" class="grid grid-cols-1 md:grid-cols-2 gap-8" enctype="multipart/form-data">
+                <div class="flex flex-col">
+                    <input name="title" type="text"
+                        class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                        placeholder="Project Title" />
                 </div>
-                <div class="flex flex-col ">
-                    <input type="text" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="e.g. Web, UI/UX" />
+                <div class="flex flex-col md:col-span-2">
+                    <label for="categories" class="mb-1 text-sm font-semibold text-gray-700">Project Categories</label>
+                    <select name="categories" multiple
+                        class="border-2 text-xs space-y-2 md:text-l border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 h-48 overflow-y-auto">
+                        <option value="Web Development">Web Development</option>
+                        <option value="Frontend Development">Frontend Development</option>
+                        <option value="Backend Development">Backend Development</option>
+                        <option value="Full Stack Development">Full Stack Development</option>
+                        <option value="Web Design">Web Design</option>
+                        <option value="UI Design">UI Design</option>
+                        <option value="UX Design">UX Design</option>
+                        <option value="Wireframing">Wireframing</option>
+                        <option value="Prototyping">Prototyping</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="iOS Development">iOS Development</option>
+                        <option value="Android Development">Android Development</option>
+                        <option value="Cross-platform Development">Cross-platform Development</option>
+                        <option value="Responsive Design">Responsive Design</option>
+                        <option value="Landing Page Design">Landing Page Design</option>
+                        <option value="E-commerce Development">E-commerce Development</option>
+                        <option value="CMS Development">CMS Development</option>
+                        <option value="API Integration">API Integration</option>
+                        <option value="Performance Optimization">Performance Optimization</option>
+                    </select>
+                    <p class="text-xs text-gray-500 mt-1">Hold down Ctrl (Windows) or Command (Mac) to select multiple.
+                    </p>
                 </div>
-                <div class="flex flex-col  md:col-span-2">
-                    <input type="file" accept="image/*" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" />
+
+                <div class="flex flex-col md:col-span-2">
+                    <input name="image" type="file" accept="image/*"
+                        class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" />
                 </div>
-                <div class="flex flex-col  md:col-span-2">
-                    <textarea rows="4" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 resize-y" placeholder="Project description..."></textarea>
+                <div class="flex flex-col md:col-span-2">
+                    <input type="url" name="projectlink" id="projectlink"
+                        class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="Project Link">
+                </div>
+                <div class="flex flex-col md:col-span-2">
+                    <textarea name="description" rows="4"
+                        class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 resize-y"
+                        placeholder="Project description..."></textarea>
                 </div>
                 <div class="flex items-end md:col-span-2 text-xs md:text-lg">
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 w-full">Add Project</button>
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 w-full">
+                        Add Project
+                    </button>
                 </div>
             </form>
+
         </section>
-        <section class="max-w-4xl mx-auto mb-16">
+
+        <section class="md:max-w-4xl md:mx-auto mb-16 px-4">
             <h2 class="text-sm md:text-l font-bold mb-4 text-gray-800">Existing Portfolio Items</h2>
             <div class="bg-white rounded-xl shadow p-6">
-                <p class="text-gray-500 text-center">(Portfolio items list goes here...)</p>
+                <ul class="space-y-6">
+                    <% if (portfolio.length> 0) { %>
+                        <% portfolio.forEach(item=> { %>
+                            <li class="border-b border-gray-200 pb-6 last:border-b-0">
+                                <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+                                    <img src="/uploads/<%= item.image %>" alt="<%= item.title %> Thumbnail"
+                                        class="w-32 h-20 object-cover rounded-md shadow-sm flex-shrink-0">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-900">
+                                            <%= item.title %>
+                                        </h3>
+                                        <p class="text-gray-600 text-sm">
+                                            <%= item.description %>
+                                        </p>
+                                        <div class="mt-2 flex flex-wrap gap-2">
+                                            <% item.category.forEach(cat=> { %>
+                                                <span
+                                                    class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                    <%= cat %>
+                                                </span>
+                                                <% }) %>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex justify-end space-x-2">
+                                    <button
+                                        class="bg-blue-300 hover:bg-blue-400 text-white text-xs px-3 py-1 rounded-md">
+                                        <a href="<%= item.projectlink %>"
+                                            class="bg-blue-300 hover:bg-blue-400 text-white text-xs px-3 py-1 rounded-md">
+                                            View
+                                        </a>
+                                    </button>
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md">
+                                        <a href="/admin/editportfoliopage/<%= item._id %>"
+                                            class="bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded-md">
+                                            Edit
+                                        </a>
+                                    </button>
+                                    <form action="/admin/deleteportfolio/<%= item._id %>" method="POST">
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded-md">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </li>
+                            <% }) %>
+                                <% } else { %>
+                                    <p class="text-center text-gray-500">No portfolio projects have been added yet.</p>
+                                    <% } %>
+                </ul>
+
             </div>
         </section>
     </main>
-</body>
-</html>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggle-portfolio-form-button');
+            const portfolioFormSection = document.getElementById('add-portfolio-form-section');
+
+            if (toggleButton && portfolioFormSection) {
+                toggleButton.addEventListener('click', () => {
+                    portfolioFormSection.classList.toggle('hidden'); // Toggle the 'hidden' class
+                    // Optionally change button text based on form visibility
+                    if (portfolioFormSection.classList.contains('hidden')) {
+                        toggleButton.textContent = 'Add New Project';
+                    } else {
+                        toggleButton.textContent = 'Hide Form';
+                    }
+                });
+            }
+        });
+    </script>
+    <%- include('partials/footer') %>

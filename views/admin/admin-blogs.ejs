@@ -1,60 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Manage Blogs</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
-    <nav class="bg-gradient-to-br from-blue-50 to-blue-100 shadow-md w-full z-50 rounded-b-lg p-4 md:p-6">
-        <div class="mx-auto md:px-20 flex flex-wrap items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <img src="https://placehold.co/40x40/00bcd4/ffffff?text=B" alt="Bucci Logo" class="h-10 w-10 rounded-full object-cover">
-                <span class="text-2xl font-extrabold text-gray-800">Bucci Admin</span>
+<%- include('partials/header') %>
+<main class="flex-1 pt-24 md:px-20 px-4">
+    <section class="mb-12 text-center">
+        <h1 class="text-md md:text-3xl font-extrabold text-gray-900 mb-4">Manage Blog Posts</h1>
+        <p class="text-xs md:text-lg text-blue-700 mb-8">Create, edit, or delete blog posts for your website.</p>
+        
+        <button id="toggle-blog-form-button"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 text-sm md:text-base">
+            Add New Post
+        </button>
+    </section>
+
+    <section id="add-blog-form-section" class="bg-white rounded-2xl shadow-xl p-8 mb-16 max-w-3xl mx-auto hidden">
+        <h2 class="text-l md:text-xl font-bold mb-4 text-gray-800">Add New Blog Post</h2>
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex flex-col">
+                <input type="text"
+                    class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                    placeholder="Blog Title" />
             </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="admin.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Dashboard</a>
-                <a href="admin-blogs.html" class="text-blue-700 font-bold transition duration-300">Blogs</a>
-                <a href="admin-portfolio.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Portfolio</a>
-                <a href="admin-contacts.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Contacts</a>
-                <a href="admin-contactinfo.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Contact Info</a>
+            <div class="flex flex-col">
+                <input type="text"
+                    class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500"
+                    placeholder="e.g. UI/UX, Development" />
             </div>
+            <div class="flex flex-col md:col-span-2">
+                <input type="file" accept="image/*"
+                    class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" />
+            </div>
+            <div class="flex flex-col md:col-span-2">
+                <textarea rows="6"
+                    class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 resize-y"
+                    placeholder="Blog content..."></textarea>
+            </div>
+            <div class="flex items-end md:col-span-2">
+                <button type="submit"
+                    class="text-xs md:text-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 w-full">Publish
+                    Blog</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="max-w-4xl mx-auto mb-16">
+        <h2 class="md:text-l font-bold mb-4 text-gray-800 text-sm">Existing Blog Posts</h2>
+        <div class="bg-white rounded-xl shadow p-6">
+            <p class="text-gray-500 text-center">(Blog posts list goes here...)</p>
         </div>
-    </nav>
-    <main class="flex-1 pt-24 md:px-20 px-4">
-        <section class="mb-12 text-center">
-            <h1 class="text-md md:text-3xl font-extrabold text-gray-900 mb-4">Manage Blog Posts</h1>
-            <p class="text-xs md:text-lg text-blue-700 mb-8">Create, edit, or delete blog posts for your website.</p>
-        </section>
-        <section class="bg-white rounded-2xl shadow-xl p-8 mb-16 max-w-3xl mx-auto">
-            <h2 class="text-l md:text-xl font-bold mb-4 text-gray-800">Add New Blog Post</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="flex flex-col">
-                    <input type="text" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="Blog Title" />
-                </div>
-                <div class="flex flex-col">
-                    <input type="text" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="e.g. UI/UX, Development" />
-                </div>
-                <div class="flex flex-col md:col-span-2">
-                    <input type="file" accept="image/*" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex flex-col md:col-span-2">
-                    <textarea rows="6" class="border-2 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 resize-y" placeholder="Blog content..."></textarea>
-                </div>
-                <div class="flex items-end md:col-span-2">
-                    <button type="submit" class="text-xs md:text-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 w-full">Publish Blog</button>
-                </div>
-            </form>
-        </section>
-        <section class="max-w-4xl mx-auto mb-16">
-            <h2 class="md:text-l font-bold mb-4 text-gray-800 text-sm">Existing Blog Posts</h2>
-            <div class="bg-white rounded-xl shadow p-6">
-                <p class="text-gray-500 text-center">(Blog posts list goes here...)</p>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
+    </section>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButton = document.getElementById('toggle-blog-form-button');
+        const blogFormSection = document.getElementById('add-blog-form-section');
+
+        if (toggleButton && blogFormSection) {
+            toggleButton.addEventListener('click', () => {
+                blogFormSection.classList.toggle('hidden'); 
+                if (blogFormSection.classList.contains('hidden')) {
+                    toggleButton.textContent = 'Add New Post';
+                } else {
+                    toggleButton.textContent = 'Hide Form';
+                }
+            });
+        }
+    });
+</script>
+<%- include('partials/footer') %>
+

@@ -1,66 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - View Contacts</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex flex-col">
-    <nav class="bg-gradient-to-br from-blue-50 to-blue-100 shadow-md w-full z-50 rounded-b-lg p-4 md:p-6">
-        <div class="mx-auto md:px-20 flex flex-wrap items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <img src="https://placehold.co/40x40/00bcd4/ffffff?text=B" alt="Bucci Logo" class="h-10 w-10 rounded-full object-cover">
-                <span class="text-2xl font-extrabold text-gray-800">Bucci Admin</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="admin.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Dashboard</a>
-                <a href="admin-blogs.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Blogs</a>
-                <a href="admin-portfolio.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Portfolio</a>
-                <a href="admin-contacts.html" class="text-blue-700 font-bold transition duration-300">Contacts</a>
-                <a href="admin-contactinfo.html" class="text-gray-600 hover:text-blue-700 font-medium transition duration-300">Contact Info</a>
-            </div>
-        </div>
-    </nav>
+<%- include('partials/header') %>
     <main class="flex-1 pt-24 md:px-20 px-4">
         <section class="mb-12 text-center">
             <h1 class="text-md md:text-3xl font-extrabold text-gray-900 mb-4">View Contact Messages</h1>
-            <p class="text-xs md:text-lg text-blue-700 mb-8">See all messages and enquiries sent via your website's contact form.</p>
+            <p class="text-xs md:text-lg text-blue-700 mb-8">See all messages and enquiries sent via your website's
+                contact
+                form.</p>
         </section>
         <section class="max-w-5xl mx-auto">
             <div class="bg-white rounded-2xl shadow-xl p-8 overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Email
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Phone
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Message</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Date
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">Jane Doe</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">jane@example.com</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">(555) 123-4567</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">I'm interested in your services.</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">2025-05-26</td>
-                        </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">John Smith</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">john@example.com</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">(555) 987-6543</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">Can we schedule a call?</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">2025-05-25</td>
-                        </tr>
-                        <!-- More rows as needed -->
+                        <% contacts.forEach(contact=> { %>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">
+                                    <%= contact.firstname +' '+ contact.lastname %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">
+                                    <%= contact.email %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">
+                                    <%= contact.phone %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-900">
+                                    <%= contact.message %>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-500">
+                                    <%= contact.submittedAt.toISOString().slice(0, 10) %>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                                <!-- More rows as needed -->
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
-</body>
-</html>
+    <%- include('partials/footer') %>
