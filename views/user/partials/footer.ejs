@@ -58,26 +58,32 @@
                 <ul class="space-y-4 text-balance text-xs md:text-s">
                     <li class="flex items-start  md:justify-center">
                         <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
-                        <a href="tel:+17205888452"
-                            class="text-gray-600 hover:text-blue-700 transition duration-300"><%= contactinfo.phoneNumber %></a>
+                        <a href="tel:+17205888452" class="text-gray-600 hover:text-blue-700 transition duration-300">
+                            <%= contactinfo.phoneNumber %>
+                        </a>
                     </li>
                     <li class="flex items-start md:justify-center">
                         <i class="fas fa-envelope text-blue-600 mr-3"></i>
                         <a href="mailto:<%= contactinfo.emailAddress %>"
-                            class="text-gray-600 hover:text-blue-700 transition duration-300"><%= contactinfo.emailAddress %></a>
+                            class="text-gray-600 hover:text-blue-700 transition duration-300">
+                            <%= contactinfo.emailAddress %>
+                        </a>
                     </li>
                     <li class="flex items-start md:justify-center">
                         <i class="fas fa-map-marker-alt text-blue-600 mr-3"></i>
-                        <span class="text-gray-600"><%= contactinfo.officeLocation %></span>
+                        <span class="text-gray-600">
+                            <%= contactinfo.officeLocation %>
+                        </span>
                     </li>
                     <li class="flex items-start md:justify-center">
                         <i class="fas fa-map-marker-alt text-blue-600 mr-3"></i>
-                        <span class="text-gray-600"><%= contactinfo.otherInfo %></span>
+                        <span class="text-gray-600">
+                            <%= contactinfo.otherInfo %>
+                        </span>
                     </li>
                 </ul>
                 <% } else { %>
-                    <p class="text-gray-500 text-center">No contact information saved yet. Click 'Edit Contact Details'
-                        to add new information.</p>
+                    <p class="text-gray-500 text-center">No contact information saved yet.</p>
 
                     <% } %>
         </div>

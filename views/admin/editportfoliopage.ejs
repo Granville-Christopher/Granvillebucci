@@ -40,10 +40,10 @@
                     <% if (portfolioItem.image) { %>
                         <p class="text-xs text-gray-500 mt-1">
                             Current Image:
-                            <a href="/uploads/<%= portfolioItem.image %>" target="_blank"
+                            <a href="<%= portfolioItem.image %>" target="_blank"
                                 class="text-blue-600 hover:underline">View Current Image</a>
                         </p>
-                        <img src="/uploads/<%= portfolioItem.image %>" alt="Current Project Image"
+                        <img src="<%= portfolioItem.image %>" alt="Current Project Image"
                             class="w-24 h-16 object-cover rounded-md mt-2 shadow-sm" />
                         <% } %>
                 </div>

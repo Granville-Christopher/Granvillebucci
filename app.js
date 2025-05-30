@@ -4,7 +4,7 @@ const session = require("express-session");
 const cors = require("cors");
 require("dotenv").config();
 const basicRoute = require("./routes/basicroute");
-const adminRoute = require("./routes/adminRoute");
+const adminRoute = require("./routes/adminroute");
 const path = require("path");
 const app = express();
 
@@ -43,7 +43,8 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  res.locals.user = req.session.user || null;
+  res.locals.session = req.session;
+  res.locals.currentUrl = req.originalUrl;
   next();
 });
 
