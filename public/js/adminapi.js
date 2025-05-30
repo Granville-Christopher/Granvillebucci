@@ -156,17 +156,15 @@ if (signup) {
   });
 }
 
-const loginForm = document.getElementById("loginForm"); // This selects the first form on the page
+const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // CORRECTED: Access input values using their IDs
-    const emailInput = document.getElementById("email"); // Assuming your email input has id="email"
-    const passwordInput = document.getElementById("password"); // Assuming your password input has id="password"
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
 
-    // Basic validation to ensure inputs exist
     if (!emailInput || !passwordInput) {
       showAlert("Form inputs not found. Please check HTML IDs.", "error");
       console.error("Login form email or password input not found.");
@@ -181,6 +179,7 @@ if (loginForm) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
+        credentials: "include",
       });
 
       const data = await res.json();
@@ -188,7 +187,7 @@ if (loginForm) {
       if (res.ok) {
         showAlert("Login successful", "success");
         setTimeout(() => {
-          window.location.href = "/admin/admin"; // Redirect to admin dashboard
+          window.location.href = "/admin/admin";
         }, 1500);
       } else {
         showAlert(data.error || "Login failed", "error");
@@ -382,7 +381,7 @@ if (confirmBlogDeleteBtn) {
 }
 const blogListContainer = document.querySelector(
   ".bg-white.rounded-xl.shadow.p-6"
-); 
+);
 
 if (blogListContainer) {
   blogListContainer.addEventListener("click", async (e) => {
@@ -392,7 +391,7 @@ if (blogListContainer) {
     if (deleteButton && deleteForm) {
       e.preventDefault();
 
-      currentBlogIdToDelete = deleteForm.action.split("/").pop(); 
+      currentBlogIdToDelete = deleteForm.action.split("/").pop();
 
       if (confirmBlogModal) {
         confirmBlogModal.classList.remove("hidden");
@@ -402,7 +401,7 @@ if (blogListContainer) {
         );
         if (confirmBlogDelete) {
           showAlert("Blog deleted successfully", "success");
-          confirmBlogDeleteBtn.click(); 
+          confirmBlogDeleteBtn.click();
         } else {
           currentBlogIdToDelete = null;
         }
@@ -445,3 +444,56 @@ confirmDeleteBtn.addEventListener("click", async () => {
     showAlert("Something went wrong. Please try again.", "error");
   }
 });
+
+// password reset hooks
+document.getElementById("getOtpForm")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("forgot-email").value;
+
+  try {
+    const res = await fetch("/admin/get-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    showAlert(data.message || data.error, res.ok ? "success" : "error");
+  } catch (err) {
+    showAlert("Failed to send OTP", "error");
+  }
+});
+
+
+document
+  .getElementById("resetPasswordForm")
+  ?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("reset-email").value;
+    const otp = document.getElementById("otp").value;
+    const newPassword = document.getElementById("new-password").value;
+    const confirmNewPassword = document.getElementById(
+      "confirm-new-password"
+    ).value;
+
+    try {
+      const res = await fetch("/admin/reset-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, otp, newPassword, confirmNewPassword }),
+      });
+
+      const data = await res.json();
+
+      showAlert(data.message || data.error, res.ok ? "success" : "error");
+
+      if (res.ok) {
+        setTimeout(() => {
+          window.location.href = "/admin/login";
+        }, 1500);
+      }
+
+    } catch (err) {
+      showAlert("Failed to reset password", "error");
+    }
+  });
+

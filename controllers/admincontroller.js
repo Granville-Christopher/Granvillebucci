@@ -3,12 +3,13 @@ const Portfolio = require("../models/portfolio");
 const fs = require("fs");
 // const upload = require("../middlewares/upload");
 const multer = require("multer");
-
 const { storage } = require("../config/cloudinary");
 const upload = multer({ storage });
 const Admin = require("../models/signup");
 const bcrypt = require("bcrypt");
 const Blog = require("../models/blog");
+const crypto = require("crypto");
+const sendOtpEmail = require("../config/sendotpmail")
 
 const Signup = async (req, res) => {
   try {
@@ -57,7 +58,7 @@ const Login = async (req, res) => {
       name: admin.name,
       email: admin.email,
     };
-
+    console.log("Session after login:", req.session.admin);
     res.status(200).json({ message: "Login successful" });
   } catch (error) {
     console.error("Login error:", error);
@@ -202,10 +203,63 @@ const deleteAdminContactInfo = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-const Logout = (req, res) => {
-  req.session.destroy(() => {
-    res.redirect("/admin/login");
-  });
+
+
+// reset password config
+const sendOtp = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(404).json({ error: "Admin with this email not found." });
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000); 
+    const otpExpires = new Date(Date.now() + 5 * 60 * 1000);
+
+    admin.otp = { code: otp, expiresAt: otpExpires };
+    await admin.save();
+
+    await sendOtpEmail(email, otp);
+
+    res.status(200).json({ message: "OTP sent to your email.\ only valid in 5 minutes" });
+  } catch (err) {
+    console.error("OTP send error:", err);
+    res.status(500).json({ error: "Failed to send OTP." });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  const { email, otp, newPassword, confirmNewPassword } = req.body;
+
+  if (newPassword !== confirmNewPassword) {
+    return res.status(400).json({ error: "Passwords do not match" });
+  }
+
+  try {
+    const admin = await Admin.findOne({ email });
+    if (!admin || !admin.otp || !admin.otp.code) {
+      return res.status(400).json({ error: "OTP not found or not requested" });
+    }
+
+    if (admin.otp.expiresAt < new Date()) {
+      return res.status(400).json({ error: "OTP expired" });
+    }
+
+    if (admin.otp.code !== otp) {
+      return res.status(400).json({ error: "Invalid OTP" });
+    }
+
+    admin.password = await bcrypt.hash(newPassword, 10);
+    admin.otp = { code: null, expiresAt: null }; // Clear OTP after use
+    await admin.save();
+
+    res.status(200).json({ message: "Password reset successful" });
+  } catch (error) {
+    console.error("Reset password error:", error);
+    res.status(500).json({ error: "Server error" });
+  }
 };
 
 module.exports = {
@@ -215,6 +269,7 @@ module.exports = {
   editPortfolio,
   Signup,
   Login,
-  Logout,
   createBlog,
+  sendOtp,
+  resetPassword,
 };

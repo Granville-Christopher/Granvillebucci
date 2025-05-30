@@ -10,7 +10,13 @@ const adminSchema = new mongoose.Schema({
     trim: true,
   },
   password: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
+  otp: {
+    code: { type: String, default: null },
+    expiresAt: { type: Date, default: null },
+    otpCreatedAt: { type: Date, default: Date.now },
+  },
+    createdAt: { type: Date, default: Date.now },
+  
 });
 
 module.exports = mongoose.model("Admin", adminSchema);
