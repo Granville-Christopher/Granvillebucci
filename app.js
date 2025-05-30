@@ -4,7 +4,7 @@ const session = require("express-session");
 const cors = require("cors");
 require("dotenv").config();
 const basicRoute = require("./routes/basicroute");
-const adminRoute = require("./routes/adminroute");
+const adminRoute = require("./routes/adminRoute");
 const path = require("path");
 const app = express();
 
