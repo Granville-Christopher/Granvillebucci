@@ -56,6 +56,9 @@ if (testimonyForm) {
       if (res.ok) {
         showAlert("Testimony submitted successfully!", "success");
         form.reset();
+        setTimeout(() => {
+          window.location.href = "/#testimony-section";
+        }, 1500);
       } else {
         showAlert(
           "Error: " + (data.message || "Something went wrong on the server."),

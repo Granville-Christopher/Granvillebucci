@@ -65,6 +65,7 @@ if (contactForm) {
 
       if (res.ok) {
         showAlert("Contact details sent successfully!", "success");
+        location.reload();
         form.reset();
       } else {
         showAlert(
@@ -98,6 +99,7 @@ if (portfolio) {
 
       if (res.ok) {
         showAlert("Project added successfully!", "success");
+        location.reload();
         form.reset();
       } else {
         showAlert(data.message || "Failed to add project", "error");

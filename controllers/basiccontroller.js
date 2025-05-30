@@ -1,16 +1,18 @@
-const upload = require("../middlewares/upload.js")
-
 const Testimony = require('../models/testimony');
 const Contact = require('../models/contact');
+const multer = require('multer');
+const { storage } = require("../config/cloudinary");
+const upload = multer({ storage });
+
 
 const testimonyUpload = async (req, res) => {
   console.log('Request body:', req.body);
   console.log('File:', req.file);
 
   const { point, description, name } = req.body;
-  const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+  const image = req.file?.path;
 
-  if (!point || !description || !name || !imagePath) {
+  if (!point || !description || !name || !req.file) {
     return res.status(400).json({ message: "All fields are required." });
   }
   try {
@@ -18,7 +20,7 @@ const testimonyUpload = async (req, res) => {
       point,
       description,
       name,
-      image: imagePath,
+      image,
     });
 
     await testimony.save();

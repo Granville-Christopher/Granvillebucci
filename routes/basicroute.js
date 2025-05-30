@@ -9,18 +9,22 @@ const Testimony = require("../models/testimony.js");
 const adminContact = require("../models/admincontactinfo.js");
 const Portfolio = require("../models/portfolio.js");
 const Blog = require("../models/blog.js");
+
+
 // Homepage
 router.get("/", async (req, res) => {
-  const testimonies = await Testimony.find().sort({ createdAt: -1 }).limit(5);
+  const testimonies = await Testimony.aggregate([{ $sample: { size: 20 } }]);
   const contactinfo = await adminContact.findOne();
+
   res.render("user/index", {
     title: "Granville Bucci",
     page: "index",
     loaded: "index",
-    testimonies: testimonies,
+    testimonies,
     contactinfo,
   });
 });
+
 
 router.post("/testimony", upload.single("image"), testimonyUpload);
 router.post("/contact", contactBucci);
