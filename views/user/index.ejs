@@ -1,28 +1,29 @@
 <%- include('partials/header') %>
+
     <main class="overflow-hidden relative">
         <section
-            class=" bg-gradient-to-br from-blue-50 to-blue-100 pt-32 pb-12 md:py-24 lg:py-32 overflow-hidden md:px-20 ">
-            <div class="absolute top-50 left-50 w-64 h-64 bg-white/50 rounded-full -translate-x-1/2 -translate-y-1/2">
+            class=" bg-gradient-to-br from-blue-50 to-blue-100 pt-20 pb-12 md:py-24 lg:py-32 overflow-hidden md:px-20 ">
+            <div class=" top-50 fixed left-50 w-64 h-64 bg-white/50 rounded-full -translate-x-1/2 -translate-y-1/2">
             </div>
-            <div class="absolute top-100 right-0 w-72 h-72 bg-white/50 rounded-full translate-x-1/3 translate-y-1/3">
+            <div class=" top-100 fixed right-0 w-72 h-72 bg-white/50 rounded-full translate-x-1/3 translate-y-1/3">
             </div>
-            <div class="absolute top-1/3 right-1/4 hidden md:block">
+            <div class=" top-1/3 fixed right-1/4 hidden md:block">
                 <div class="w-40 h-40 border-2 border-dotted border-white/40 rounded-full"></div>
             </div>
             <div
-                class="absolute top-0 left-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-15 animate-blob">
+                class=" top-0 left-0 fixed w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-15 animate-blob">
             </div>
             <div
-                class="absolute md:top-80 right-0 hidden md:flex md:w-64 md:h-64 h-32 w-32  bg-blue-900 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000">
+                class=" md:top-80 fixed right-0 hidden md:flex md:w-64 md:h-64 h-32 w-32  bg-blue-900 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000">
             </div>
 
             <div class=" mx-auto px-10 flex flex-col lg:flex-row items-center justify-between gap-12">
                 <div class="lg:w-1/2 sm:text-center lg:text-left">
                     <h1 class="md:text-3xl text-2xl  font-extrabold text-gray-900 leading-tight mb-6">
-                        Transform Your <br>
-                        Digital Footprint
-                        <span class="text-blue-700">Engaging User-Centric Design<br></span>
-                        Seamless Front-end<br>
+                        Transform Your digital<br>
+                        Footprint <br>
+                        <span class="text-blue-700 text-2xl md:text-4xl brandtxt">Engaging user-centric Design,</span><br>
+                        Seamless Front-end
                         and Back-end<br>
                         Integration
                     </h1>
@@ -37,14 +38,14 @@
                     </button>
                 </div>
 
-                <div class="lg:w-1/2 flex justify-center lg:justify-end">
+                <div class="lg:w-1/2 flex justify-center lg:justify-end relative rounded-xl" id="heroImageWrapper">
                     <img src="img/file_00000000d99061f7b44b0010ab393194.png" alt="UI/UX Design Illustration"
-                        class="rounded-xl shadow-2xl max-w-full h-auto">
+                        class="rounded-xl shadow-2xl max-w-full h-auto heroimggg">
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 px-4 sm:px-10 md:px-20 bg-white">
+        <section class="pb-16 pt-10 md:py-24 px-4 sm:px-10 md:px-20 bg-white">
             <div class="text-center mb-12">
                 <h4 class="text-l md:text-2xl lg:text-3xl font-extrabold text-gray-900 mb-4">
                     Elevate Your Online Presence with Bucci
@@ -140,17 +141,17 @@
             </div>
 
 
-            <div class=" flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div id="projectSection" class=" flex flex-col lg:flex-row items-center justify-between gap-12">
                 <div class="lg:w-1/2 z-40 text-center lg:text-left py-4 ">
                     <p class="text-l md:text-lg text-blue-200 mb-4">
                         Experience the perfect blend of aesthetic appeal and technical excellence.
                     </p>
-                    <h2 class="text-3xl md:text-3xl lg:text-3xl font-extrabold leading-tight mb-6">
+                    <h2 class="twb text-3xl md:text-3xl lg:text-3xl font-extrabold leading-tight mb-6">
                         Tailored web solutions with over 30 successful projects
                     </h2>
-                    <button
-                        class="bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 mt-16 mb-0 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 text-xs md:text-s">
-                        Begin Your Project
+                    <button  id="beginProjectBtn"
+                        class="beginprj bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 mt-16 mb-0 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 text-xs md:text-s">
+                        <a href="#contact">Begin Your Project</a> 
                     </button>
                 </div>
 
@@ -269,7 +270,7 @@
                         <% } %>
             </div>
             <!-- Testimonial Submission Form -->
-            <div class="max-w-3xl mx-auto mt-16 bg-white rounded-3xl shadow-xl p-8 md:p-12">
+            <div id="testimonySection" class="max-w-3xl mx-auto mt-16 bg-white rounded-3xl shadow-xl p-8 md:p-12">
                 <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 text-center">Share Your Testimony</h3>
                 <form id="testimonyForm" class="grid grid-cols-1 md:grid-cols-2 gap-8" enctype="multipart/form-data">
                     <div class="flex flex-col ">
@@ -386,21 +387,29 @@
                                 <i class="fas fa-map-marker-alt text-l md:text-xl mr-4 mt-1"></i>
                                 <div>
                                     <p class="font-semibold text-l">Our Office</p>
-                                    <p class="text-blue-200 text-xs md:text-lg"><%= contactinfo.otherInfo %></p>
+                                    <p class="text-blue-200 text-xs md:text-lg">
+                                        <%= contactinfo.otherInfo %>
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <i class="fas fa-envelope text-l md:text-xl mr-4 mt-1"></i>
                                 <div>
                                     <p class="font-semibold text-l">Contact Us Via Email</p>
-                                    <p class="text-blue-200 text-xs md:text-lg"><a href="mailto:<%= contactinfo.emailAddress %>"><%= contactinfo.emailAddress %></a></p>
+                                    <p class="text-blue-200 text-xs md:text-lg"><a
+                                            href="mailto:<%= contactinfo.emailAddress %>">
+                                            <%= contactinfo.emailAddress %>
+                                        </a></p>
                                 </div>
                             </div>
                             <div class="flex items-start">
                                 <i class="fas fa-phone-alt text-l md:text-xl mr-4 mt-1"></i>
                                 <div>
                                     <p class="font-semibold text-l">Call Us</p>
-                                    <p class="text-blue-200 text-xs md:text-lg"><a href="tel:<%= contactinfo.phoneNumber %>"><%= contactinfo.phoneNumber %></a></p>
+                                    <p class="text-blue-200 text-xs md:text-lg"><a
+                                            href="tel:<%= contactinfo.phoneNumber %>">
+                                            <%= contactinfo.phoneNumber %>
+                                        </a></p>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -408,7 +417,10 @@
                                     class="fab fa-whatsapp text-l md:text-xl mr-4 rounded-2xl md:px-1.5 p-1 bg-green-500 mt-1"></i>
                                 <div>
                                     <p class="font-semibold text-l">Whatsapp</p>
-                                    <p class="text-blue-200 text-xs md:text-lg"><a href="http://wa.me/<%= contactinfo.phoneNumber %>"><%= contactinfo.phoneNumber %></a></p>
+                                    <p class="text-blue-200 text-xs md:text-lg"><a
+                                            href="http://wa.me/<%= contactinfo.phoneNumber %>">
+                                            <%= contactinfo.phoneNumber %>
+                                        </a></p>
                                 </div>
                             </div>
                         </div>
@@ -423,41 +435,41 @@
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label for="first-name"
-                                                class="block text-gray-700 text-xs font-semibold mb-2">Your
+                                                class="block slide-from-left text-gray-700 text-xs font-semibold mb-2">Your
                                                 First
                                                 Name</label>
                                             <input type="text" id="firstname" name="firstname"
-                                                class="w-full px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                                                class="w-full  slide-from-right px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
                                         </div>
                                         <div>
                                             <label for="last-name"
-                                                class="block text-gray-700 text-xs font-semibold mb-2">Your Last
+                                                class="block slide-from-left text-gray-700 text-xs font-semibold mb-2">Your Last
                                                 Name</label>
                                             <input type="text" id="lastname" name="lastname"
-                                                class="w-full px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                                                class="w-full  slide-from-right px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label for="email"
-                                                class="block text-gray-700 text-xs font-semibold mb-2">Your
+                                                class="block slide-from-left text-gray-700 text-xs font-semibold mb-2">Your
                                                 Email</label>
                                             <input type="email" id="email" name="email"
-                                                class="w-full px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                                                class="w-full  slide-from-right px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
                                         </div>
                                         <div>
                                             <label for="phone"
-                                                class="block text-gray-700 text-xs font-semibold mb-2">Your Phone
+                                                class="block slide-from-left text-gray-700 text-xs font-semibold mb-2">Your Phone
                                                 Number</label>
                                             <input type="tel" id="phone" name="phone"
-                                                class="w-full px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
+                                                class="w-full  slide-from-right px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200">
                                         </div>
                                     </div>
                                     <div>
-                                        <label for="message" class="block text-gray-700 text-xs font-semibold mb-2">Your
+                                        <label for="message" class="block slide-from-left text-gray-700 text-xs font-semibold mb-2">Your
                                             Message</label>
                                         <textarea id="message" name="message" rows="3"
-                                            class="w-full px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200 "></textarea>
+                                            class="w-full  slide-from-right px-4 md:py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-200 "></textarea>
                                     </div>
                                     <button type="submit"
                                         class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 text-xs md:text-s">

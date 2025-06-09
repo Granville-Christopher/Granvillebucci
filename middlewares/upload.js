@@ -5,7 +5,6 @@ const path = require("path");
 // Storage configuration
 const { storage } = require("../config/cloudinary"); 
 
-
 // File filter (optional, can restrict to only images)
 const fileFilter = function (req, file, cb) {
   const allowedTypes = /jpeg|jpg|png|gif|webp/;

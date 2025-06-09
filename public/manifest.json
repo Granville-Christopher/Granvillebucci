@@ -1,0 +1,21 @@
+{
+  "name": "Granville Bucci Portfolio App",
+  "description": "A portfolio app showcasing Granville Bucci's work and projects.",
+  "short_name": "BucciApp",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#317EFB",
+  "icons": [
+    {
+      "src": "/buccimain.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/buccimain.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -12,7 +12,7 @@
         <!-- Featured Article -->
         <% if (featuredBlog) { %>
             <section
-                class="md:mb-20 my-4 flex flex-col md:flex-row items-center gap-12 bg-white rounded-3xl shadow-2xl p-8 md:p-16 relative overflow-hidden">
+                class="md:mb-20 my-4 flex flex-col featured-blog md:flex-row items-center gap-12 bg-white rounded-3xl shadow-2xl p-8 md:p-16 relative overflow-hidden">
                 <div class="md:w-1/2 w-full flex-shrink-0">
                     <img src="<%= featuredBlog.blogImage %>" alt="<%= featuredBlog.blogTitle %>"
                         class="rounded-2xl shadow-xl w-full h-72 object-cover">
@@ -67,14 +67,115 @@
   </section>
 
   <!-- Call to Action -->
-  <section class="bg-blue-600 text-white rounded-2xl shadow-xl py-12 px-6 md:px-20 text-center mb-20">
-    <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Want more insights or a custom solution?</h2>
-    <p class="text-md md:text-lg mb-6">Contact Bucci for expert advice, web development, and UI/UX design services.</p>
-    <a href="/#contact"
+  <section id="projectSectiond" class="bg-blue-600 text-white rounded-2xl shadow-xl py-12 px-6 md:px-20 text-center mb-20">
+    <h2 class="text-2xl md:text-3xl dtwb font-extrabold mb-4">Want more insights or a custom solution?</h2>
+    <p class="text-md md:text-lg mb-6 dtwb">Contact Bucci for expert advice, web development, and UI/UX design services.</p>
+    <a href="/#contact" id="beginProjectBtnd"
        class="bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg shadow-lg transition duration-300 inline-block">
       Contact Me
     </a>
   </section>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script src="/js/gsapanim.js"></script>
+<script >
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectSectiond = document.getElementById("projectSectiond");
+        const twbElementsd = document.querySelectorAll(".dtwb");
+        const beginProjectBtnd = document.getElementById("beginProjectBtnd");
+        
+        function wrapWordsw(element) {
+          const words = element.textContent.trim().split(/\s+/);
+          element.textContent = "";
+          words.forEach((word, i) => {
+            const span = document.createElement("span");
+            span.textContent = word;
+            span.style.display = "inline-block";
+            if (i !== words.length - 1) span.style.marginRight = "0.25em";
+            element.appendChild(span);
+          });
+          return element.querySelectorAll("span");
+        }
+        if (projectSectiond && twbElementsd.length > 0 && beginProjectBtnd) {
+            const projectTimeline = gsap.timeline({
+                scrollTrigger: {
+                  trigger: projectSectiond, // ✅ corrected here
+                  start: "top center",
+                  toggleActions: "play none none none",
+                  once: true,
+                },
+            });
+        
+            twbElementsd.forEach((element) => {
+              const wordSpans = wrapWordsw(element);
+              console.log(wordSpans); // ✅ more helpful than logging NodeList
+            
+              gsap.set(wordSpans, { opacity: 0, y: 20 });
+            
+              projectTimeline.to(
+                wordSpans,
+                {
+                  opacity: 1,
+                  y: 0,
+                  ease: "power2.out",
+                  duration: 0.6,
+                  stagger: 0.05,
+                },
+                "<0.2"
+              );
+            });
+        
+            projectTimeline
+              .fromTo(
+                beginProjectBtnd,
+                { scale: 0.8, opacity: 0 },
+                {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 0.8,
+                  ease: "back.out(1.7)",
+                },
+                "<0.5"
+              )
+              .to(
+                beginProjectBtnd,
+                {
+                  scale: 1.05,
+                  duration: 1.2,
+                  yoyo: true,
+                  repeat: -1,
+                  ease: "power1.inOut",
+                },
+                "<0.2"
+              );
+        } else {
+          console.warn(
+            "Project blog section elements not found. Scroll-triggered animations not applied."
+          );
+        }
+
+
+
+
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Example animation for the featured blog section
+        gsap.from('.featured-blog', {
+            scrollTrigger: {
+                trigger: '.featured-blog',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1
+        });
+
+    });
+</script>
 
 <%- include('partials/footer') %>

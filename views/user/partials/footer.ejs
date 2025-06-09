@@ -58,13 +58,15 @@
                 <ul class="space-y-4 text-balance text-xs md:text-s">
                     <li class="flex items-start  md:justify-center">
                         <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
-                        <a href="tel:<%= contactinfo.phoneNumber %>" class="text-gray-600 hover:text-blue-700 transition duration-300">
+                        <a href="tel:<%= contactinfo.phoneNumber %>"
+                            class="text-gray-600 hover:text-blue-700 transition duration-300">
                             <%= contactinfo.phoneNumber %>
                         </a>
                     </li>
                     <li class="flex items-start  md:justify-center">
                         <i class="fab fa-whatsapp text-green-600 mr-3"></i>
-                        <a href="https://wa.me/<%= contactinfo.phoneNumber %>" class="text-gray-600 hover:text-blue-700 transition duration-300">
+                        <a href="https://wa.me/<%= contactinfo.phoneNumber %>"
+                            class="text-gray-600 hover:text-blue-700 transition duration-300">
                             <%= contactinfo.phoneNumber %>
                         </a>
                     </li>
@@ -102,6 +104,26 @@
 
 </main>
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- GSAP Core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<!-- GSAP Plugins (before your custom file) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<!-- REPLACE SplitText CDN with GSAP's Club URL
+<script src="https://assets.codepen.io/16327/SplitText3.min.js"></script> -->
+
+<!-- <script src="https://assets.codepen.io/16327/PhysicsPropsPlugin3.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js"></script>
+
+<!-- Now load your custom animation file -->
+<script src="/js/gsapanim.js"></script>
+
 <script src="js/formapi.js"></script>
 <script src="js/js.js"></script>
 </body>
