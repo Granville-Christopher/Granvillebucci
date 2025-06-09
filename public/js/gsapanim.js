@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const tlPieces = gsap.timeline({
-      delay: 0.8,
+      delay: 0,
       onComplete: () => {
         pieces.forEach((p) => (p.style.display = "none"));
         originalHeroImage.style.opacity = 1;
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scale: 0,
       rotation: "random(-180, 180)",
       ease: "back.out(2.5)",
-      duration: 1.2,
+      duration: 0.8,
       stagger: {
         each: 0.04,
         from: "random",

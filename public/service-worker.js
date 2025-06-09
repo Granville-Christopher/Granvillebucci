@@ -17,7 +17,7 @@ self.addEventListener("install", (event) => {
 
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache).catch(err => {
+      return cache.addAll(urlsToCache).catch((err) => {
         console.error("[SW] Cache addAll failed:", err);
       });
     })
@@ -59,16 +59,15 @@ self.addEventListener("fetch", (event) => {
             networkResponse.status === 200 &&
             networkResponse.type === "basic"
           ) {
+            const responseToCache = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, networkResponse.clone());
+              cache.put(event.request, responseToCache);
             });
           }
+
           return networkResponse;
         })
-        .catch(() => {
-          // Optional: offline fallback
-          // return caches.match("/offline.html");
-        });
+        .catch(() => {});
     })
   );
 });

@@ -50,7 +50,7 @@
 
 <body>
     <nav
-        class=" bg-gradient-to-br from-blue-50 to-blue-100 shadow-md fixed top-0 left-0 w-full z-50 rounded-b-lg p-4 md:p-6">
+        class="overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 shadow-md fixed top-0 left-0 w-full z-50 rounded-b-lg p-4 md:p-6">
         <div class=" mx-auto md:px-20 flex flex-wrap items-center justify-between">
             <div class="flex items-center space-x-2">
                 <a href="/" class="flex items-center space-x-2">
@@ -79,11 +79,16 @@
                 <a href="/#contact"> Get in Touch</a>
             </button>
 
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-700 focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg id="menu-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
 
         <div id="mobile-menu" class="hidden w-full md:hidden">
@@ -153,7 +158,8 @@
                         navLinks.forEach((link) => {
                             link.classList.remove("text-blue-700", "font-bold");
                             link.classList.add("text-gray-600");
-                            if (link.getAttribute("href").includes(`#${sectionId}`)) {
+                            const href = link.getAttribute("href");
+                            if (href && href.includes(`#${sectionId}`)) {
                                 link.classList.add("text-blue-700", "font-bold");
                                 link.classList.remove("text-gray-600");
                             }
