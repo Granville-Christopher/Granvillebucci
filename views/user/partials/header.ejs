@@ -50,8 +50,9 @@
 
 <body>
     <nav
-        class="overflow-x-hidden bg-gradient-to-br from-blue-50 to-blue-100 shadow-md fixed top-0 left-0 w-full z-50 rounded-b-lg p-4 md:p-6">
-        <div class=" mx-auto md:px-20 flex flex-wrap w-full max-w-screen-xl items-center justify-between">
+        class="fixed top-0 left-0 z-50 w-full bg-gradient-to-br from-blue-50 to-blue-100 shadow-md rounded-b-lg p-4 md:p-6 overflow-x-hidden">
+        <div class="w-full max-w-screen-xl mx-auto px-4 md:px-20 flex flex-wrap items-center justify-between">
+            <!-- Logo -->
             <div class="flex items-center space-x-2">
                 <a href="/" class="flex items-center space-x-2">
                     <img src="https://placehold.co/40x40/fff/3B82F6?text=B" alt="Bucci Logo"
@@ -60,25 +61,21 @@
                 </a>
             </div>
 
+            <!-- Desktop Nav -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="/#about"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">About</a>
-                <a href="/portfolio"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Portfolio</a>
-                <a href="/#services"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Services</a>
-                <a href="/blog"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium flex items-center gap-1 transition duration-300 ease-in-out">
-                    Blog
-                </a>
-
+                <a href="/#about" class="text-gray-600 hover:text-blue-700 font-medium transition">About</a>
+                <a href="/portfolio" class="text-gray-600 hover:text-blue-700 font-medium transition">Portfolio</a>
+                <a href="/#services" class="text-gray-600 hover:text-blue-700 font-medium transition">Services</a>
+                <a href="/blog" class="text-gray-600 hover:text-blue-700 font-medium transition">Blog</a>
             </div>
 
-            <button id="contactHeaderBtn"
-                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                <a href="/#contact"> Get in Touch</a>
-            </button>
+            <!-- Contact Button -->
+            <a href="/#contact"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition transform hover:scale-105">
+                Get in Touch
+            </a>
 
+            <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden">
                 <svg id="menu-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -91,21 +88,17 @@
             </button>
         </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden w-full md:hidden">
-            <div class="flex flex-col items-start py-4 space-y-4">
-                <a href="/#about"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">About</a>
-                <a href="/portfolio"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Portfolio</a>
-                <a href="/#services"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Services</a>
-                <a href="/blog"
-                    class="text-gray-600 nav-link hover:text-blue-700 font-medium flex items-center gap-1 transition duration-300 ease-in-out">
-                    Blog
-                </a>
+            <div class="flex flex-col items-start py-4 px-4 space-y-4">
+                <a href="/#about" class="text-gray-600 hover:text-blue-700 font-medium transition">About</a>
+                <a href="/portfolio" class="text-gray-600 hover:text-blue-700 font-medium transition">Portfolio</a>
+                <a href="/#services" class="text-gray-600 hover:text-blue-700 font-medium transition">Services</a>
+                <a href="/blog" class="text-gray-600 hover:text-blue-700 font-medium transition">Blog</a>
             </div>
         </div>
     </nav>
+
 
     <div id="customAlertModal"
         class="fixed inset-0 bg-gray-600 nav-link bg-opacity-50 flex items-center justify-center z-50 hidden">
