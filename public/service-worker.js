@@ -1,45 +1,73 @@
 const CACHE_NAME = "bucci-v1";
 
+// Static files only
 const urlsToCache = [
-  "/",
-  "index",
-  "/portfolio",
-  "/blog",
-  "/blogsingle",
+  "/", // Only if your homepage loads without error
   "/buccimain.png",
   "/css/style.css",
   "/js/js.js",
-  "/js/formapi.js", 
+  "/js/formapi.js",
+  // Optional: add a custom fallback page for offline
+  // "/offline.html"
 ];
 
 self.addEventListener("install", (event) => {
   console.log("[Service Worker] Installing...");
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
+      return cache.addAll(urlsToCache).catch(err => {
+        console.error("[SW] Cache addAll failed:", err);
+      });
     })
   );
-  self.skipWaiting();
+
+  self.skipWaiting(); // Force immediate activation
 });
 
 self.addEventListener("activate", (event) => {
   console.log("[Service Worker] Activated");
+
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
         cacheNames.map((name) => {
-          if (name !== CACHE_NAME) return caches.delete(name);
+          if (name !== CACHE_NAME) {
+            console.log(`[SW] Deleting old cache: ${name}`);
+            return caches.delete(name);
+          }
         })
       )
     )
   );
+
+  self.clients.claim(); // Control pages ASAP
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request);
+      if (cachedResponse) return cachedResponse;
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          // Only cache valid responses
+          if (
+            networkResponse.status === 200 &&
+            networkResponse.type === "basic"
+          ) {
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, networkResponse.clone());
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          // Optional: offline fallback
+          // return caches.match("/offline.html");
+        });
     })
   );
 });
-
