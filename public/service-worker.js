@@ -3,6 +3,7 @@ const CACHE_NAME = "bucci-v1";
 // Static files only
 const urlsToCache = [
   "/", // Only if your homepage loads without error
+  "https://placehold.co/40x40/fff/3B82F6?text=B",
   "/buccimain.png",
   "/css/style.css",
   "/js/js.js",

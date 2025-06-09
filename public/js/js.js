@@ -137,11 +137,30 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", adjustCarouselHeight);
 });
 
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.error('SW registration failed:', err));
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((reg) => console.log("SW registered:", reg.scope))
+      .catch((err) => console.error("SW registration failed:", err));
   });
 }
+
+// Optional smooth scroll offset with JS
+document.querySelectorAll('a[href^="/#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    const id = this.getAttribute("href").split("#")[1];
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      const offset = 96; // adjust to match navbar height
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    }
+  });
+});
+

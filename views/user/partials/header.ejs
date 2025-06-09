@@ -3,22 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/buccimain.png" type="image/png">
+    <link rel="icon" href="https://placehold.co/40x40/fff/3B82F6?text=B" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Granville Christopher's portfolio" />
 
     <title>
         <%= title %>
     </title>
-    <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 
 
-    <link rel="icon" href="/buccimain.png" />
-    <link rel="apple-touch-icon" href="/buccimain.png" />
+    <link rel="icon" href="https://placehold.co/40x40/fff/3B82F6?text=B" />
+    <link rel="apple-touch-icon" href="https://placehold.co/40x40/fff/3B82F6?text=B" />
     <link rel="manifest" href="/manifest.json" />
 
 
@@ -63,13 +62,13 @@
 
             <div class="hidden md:flex items-center space-x-8">
                 <a href="/#about"
-                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">About</a>
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">About</a>
                 <a href="/portfolio"
-                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">Portfolio</a>
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Portfolio</a>
                 <a href="/#services"
-                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">Services</a>
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Services</a>
                 <a href="/blog"
-                    class="text-gray-600 hover:text-blue-700 font-medium flex items-center gap-1 transition duration-300 ease-in-out">
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium flex items-center gap-1 transition duration-300 ease-in-out">
                     Blog
                 </a>
 
@@ -89,14 +88,14 @@
 
         <div id="mobile-menu" class="hidden w-full md:hidden">
             <div class="flex flex-col items-start py-4 space-y-4">
-                <a href="#about"
-                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">About</a>
-                <a href="portfolio"
-                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">Portfolio</a>
-                <a href="#services"
-                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-300 ease-in-out">Services</a>
-                <a href="blog"
-                    class="text-gray-600 hover:text-blue-700 font-medium flex items-center gap-1 transition duration-300 ease-in-out">
+                <a href="/#about"
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">About</a>
+                <a href="/portfolio"
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Portfolio</a>
+                <a href="/#services"
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium transition duration-300 ease-in-out">Services</a>
+                <a href="/blog"
+                    class="text-gray-600 nav-link hover:text-blue-700 font-medium flex items-center gap-1 transition duration-300 ease-in-out">
                     Blog
                 </a>
             </div>
@@ -104,12 +103,12 @@
     </nav>
 
     <div id="customAlertModal"
-        class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 hidden">
+        class="fixed inset-0 bg-gray-600 nav-link bg-opacity-50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm mx-4">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-semibold text-gray-900">Notification</h3>
                 <button id="customAlertCloseButton"
-                    class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+                    class="text-gray-400 hover:text-gray-600 nav-link text-2xl leading-none">&times;</button>
             </div>
             <p id="customAlertMessage" class="text-lg text-gray-800 mb-6"></p>
             <div class="flex justify-end">
@@ -137,4 +136,33 @@
             });
 
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            function activateLink() {
+                let scrollY = window.scrollY;
+
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute("id");
+
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        navLinks.forEach((link) => {
+                            link.classList.remove("text-blue-700", "font-bold");
+                            link.classList.add("text-gray-600");
+                            if (link.getAttribute("href").includes(`#${sectionId}`)) {
+                                link.classList.add("text-blue-700", "font-bold");
+                                link.classList.remove("text-gray-600");
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", activateLink);
+        });
+
     </script>
